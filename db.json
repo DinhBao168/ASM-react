@@ -1,0 +1,154 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "john_doe",
+      "email": "bao@gmail.com",
+      "password": "12345",
+      "role": "customer"
+    },
+    {
+      "id": "0248",
+      "name": "Dinh Gia Bao",
+      "email": "bao2@gmail.com",
+      "password": "111",
+      "role": "customer"
+    },
+    {
+      "id": "1cb7",
+      "name": "Long lon",
+      "email": "long1@gmail.com",
+      "password": "111",
+      "role": "customer"
+    }
+  ],
+  "products": [
+    {
+      "id": "101",
+      "name": "Cappuccino",
+      "subtitle": "With Steamed Milk",
+      "price": 4.2,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg",
+      "detailImage": "https://www.acouplecooks.com/wp-content/uploads/2020/10/how-to-make-cappuccino-005.jpg",
+      "rating": 4.5,
+      "reviews": 6879,
+      "description": "Cappuccino is a latte made with more foam than steamed milk, often with a sprinkle of cocoa powder or cinnamon on top.",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 4.2
+        },
+        {
+          "size": "M",
+          "price": 4.8
+        },
+        {
+          "size": "L",
+          "price": 5.5
+        }
+      ],
+      "tags": [
+        "Coffee",
+        "Milk"
+      ],
+      "roastType": "Medium Roasted"
+    },
+    {
+      "id": "102",
+      "name": "Espresso",
+      "subtitle": "Strong and bold",
+      "price": 3.5,
+      "image": "https://img.freepik.com/premium-photo/espresso-delight-enjoying-rich-bold-flavor-every-sip_1106454-17863.jpg",
+      "detailImage": "https://bitofcream.com/wp-content/uploads/2022/09/cropped-Espresso-1.png",
+      "rating": 4.7,
+      "reviews": 5231,
+      "description": "Espresso is a concentrated coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 3.5
+        },
+        {
+          "size": "M",
+          "price": 4
+        },
+        {
+          "size": "L",
+          "price": 4.5
+        }
+      ],
+      "tags": [
+        "Coffee",
+        "Egg"
+      ],
+      "roastType": "Dark Roasted"
+    },
+    {
+      "id": "103",
+      "name": "Americano",
+      "subtitle": "Rich and smooth",
+      "price": 3.8,
+      "image": "https://www.thedailymeal.com/img/gallery/what-is-an-americano-coffee-and-why-is-it-called-that/l-intro-1675294683.jpg",
+      "detailImage": "https://th.bing.com/th/id/OIP.j8FBKOP90XMyt14srxE55wHaHa?rs=1&pid=ImgDetMain",
+      "rating": 4.3,
+      "reviews": 4120,
+      "description": "Americano is a coffee drink prepared by diluting an espresso with hot water, giving it a similar strength to traditional coffee but with a different flavor.",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 3.8
+        },
+        {
+          "size": "M",
+          "price": 4.3
+        },
+        {
+          "size": "L",
+          "price": 4.8
+        }
+      ],
+      "tags": [
+        "Coffee",
+        "Water"
+      ],
+      "roastType": "Light Roasted"
+    },
+    {
+      "id": "1740220627958",
+      "name": "Cafe sữa",
+      "subTitle": "Với trứng và đá",
+      "price": 15000,
+      "image": "https://th.bing.com/th/id/OIP.STIsesBSIMyK3oAZT90FBQHaJE?rs=1&pid=ImgDetMain",
+      "detailImage": "https://th.bing.com/th/id/OIP.jV0tzwoGMH4fQke45uWhWQHaJQ?w=640&h=800&rs=1&pid=ImgDetMain",
+      "rating": 4.5,
+      "reviews": 100,
+      "description": "Siêu ngon",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 15000
+        },
+        {
+          "size": "M",
+          "price": 20000
+        },
+        {
+          "size": "L",
+          "price": 25000
+        }
+      ],
+      "tags": [
+        "Cafe",
+        "milk"
+      ],
+      "roastType": "Dark "
+    }
+  ]
+}
