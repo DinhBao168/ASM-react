@@ -1,106 +1,139 @@
-import { FlatList, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Alert, FlatList, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from "@react-navigation/native";
 
+import { useEffect, useState } from "react";
 
-const products = [
-    {
-      id: '1',
-      name: 'Cappuccino',
-      subname: 'With Steamed Milk',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, repellat! Quo, quam dicta quisquam vero magni, adipisci pariatur eaque assumenda expedita unde ipsum autem eius veniam possimus placeat sed perferendis',
-      price: '$4.20',
-      rating: 4.5,
-      image: require('../assets/images/cafe1.png')
-    },
-    {
-      id: '2',
-      name: 'Cappuccino',
-      subname: 'With Foam',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, repellat! Quo, quam dicta quisquam vero magni, adipisci pariatur eaque assumenda expedita unde ipsum autem eius veniam possimus placeat sed perferendis',
-      price: '$4.20',
-      rating: 4.2,
-      image: require('../assets/images/cafe1.png')
-    },
-    {
-      id: '3',
-      name: 'Robusta Beans',
-      subname: 'With Foam',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, repellat! Quo, quam dicta quisquam vero magni, adipisci pariatur eaque assumenda expedita unde ipsum autem eius veniam possimus placeat sed perferendis',
-      price: '$4.20',
-      rating: 4.8,
-      image: require('../assets/images/cafe1.png')
-    }
-  ];
+interface Favourite {
+    id: string,
+    name: string,
+    subtitle: string,
+    rating: number,
+    image: string,
+    tags: string[],
+    roastType: string,
+    description: string,
+}
+
 const App = ()=>{
+    const [favourites, setFavourites] = useState<Favourite[]>([]);
+    const navigation = useNavigation();
+
+    const fetchYT = ()=>{
+        fetch(`http://172.20.10.2:3000/favorites`)
+        .then(res=> res.json())
+        .then(data =>setFavourites(data))
+        .catch(error => console.log('Lỗi khi tải dữ liệu: ' ,error))
+    }
+
+    useEffect(()=>{
+        const now = navigation.addListener('focus', ()=>{
+            fetchYT()
+        });
+        return now;
+    },[navigation])
+
+    const deleteYT = async(id: string) =>{
+        try {
+            const res = await fetch(`http://172.20.10.2:3000/favorites/${id}`, {
+                method: 'DELETE',
+            });
+            if(res.ok){
+                Alert.alert("Đã xóa khỏi danh sách yêu thích!");
+                setFavourites(favourites.filter(item=>item.id !== id));
+            }else{
+                Alert.alert('Lỗi khi xóa sản phẩm')
+            }
+        } catch (error) {
+            console.log('Lỗi server ', error)
+        }
+    }
+
+   
+
+    const renderItem = ({item} : {item: Favourite}) =>(
+<TouchableOpacity
+  onLongPress={()=>
+    Alert.alert("Xóa sản phẩm",
+        "Bạn có chắc muốn xóa khỏi sản phẩm yêu thích không",
+        [
+            {text: "Hủy", style: 'cancel'},
+            {text: "Có", onPress: ()=>deleteYT(item.id)}
+        ]
+    )
+  }
+style = {styles.containerList} >
+        <Image style={styles.imageContent}
+        source={{uri: item.image}}/>
+  
+    
+    <View style={styles.content}>
+        <View style={styles.contentText}>
+    <Text style= {styles.name}>{item.name}</Text>
+    <Text style = {styles.namePhu}>{item.subtitle}</Text>
+    <View style= {{flexDirection: 'row', alignItems: 'center'}}>
+        <Ionicons name="star" color='#D17842' size={24}/>
+        <Text style= {styles.star}>{item.rating}</Text>
+    </View>
+        </View>
+
+        <View style = {styles.content2}>
+            <View style = {styles.rowContent}>
+                <TouchableOpacity style= {styles.btnCoffee}>
+                    <Image style={{width: 25, height: 25}}  source={require('../assets/images/Group 19.png')}/>
+                    <Text style = {styles.textCoffee}>{item.tags[0]}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style = {styles.btnMilk}>
+                    <Ionicons name="water" size={25} color='#D17842' />
+                    <Text style = {styles.textCoffee}>{item.tags[1]}</Text>
+                </TouchableOpacity>
+            </View>
+            <View>
+                <TouchableOpacity style = {styles.btnText}>
+                    <Text style = {styles.textCoffee}>{item.roastType}</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </View>
+
+
+    <View style={styles.mota}>
+<LinearGradient
+colors={['#111111', '#333333']} // Màu nền gradient
+style={styles.mt}
+>
+<Text style={{color: 'white', fontWeight: 'bold'}}>Description</Text>
+<Text style={{color: 'white'}}>{item.description}</Text>
+</LinearGradient>
+</View>
+</TouchableOpacity>
+    )
+
     return(
         
         <View style = {styles.container}>
-            <StatusBar barStyle='light-content'  backgroundColor='transparent' translucent/>
+            <StatusBar barStyle='dark-content'  backgroundColor='transparent' translucent/>
             <View style = {styles.header}>
-                <TouchableOpacity style={styles.app}>
+                <TouchableOpacity
+                onPress={()=>navigation.navigate('Main')}
+                 style={styles.app}>
                     <Image style={styles.imageApp} source={require('../assets/images/app.png')}/>
                 </TouchableOpacity>
                  
                  <Text style={styles.title}>Favourite</Text>
-
+                <TouchableOpacity onPress={()=>navigation.navigate('Setting')}>
                 <Image style={styles.person} source={require('../assets/images/Intersect.png')}/>
+                </TouchableOpacity>
+               
             </View>
 
             <View >
                 <FlatList
-                data={products}
-                keyExtractor={(item)=>item.id}
+                data={favourites}
+                keyExtractor={(item)=>item.id.toString()}
                 
-                renderItem={({item})=>(
-                    <View style = {styles.containerList} >
-                       
-                            <Image style={styles.imageContent} source={item.image}/>
-                      
-                        
-                        <View style={styles.content}>
-                            <View style={styles.contentText}>
-                        <Text style= {styles.name}>{item.name}</Text>
-                        <Text style = {styles.namePhu}>{item.subname}</Text>
-                        <View style= {{flexDirection: 'row', alignItems: 'center'}}>
-                            <Ionicons name="star" color='#D17842' size={24}/>
-                            <Text style= {styles.star}>{item.rating}</Text>
-                        </View>
-                            </View>
-
-                            <View style = {styles.content2}>
-                                <View style = {styles.rowContent}>
-                                    <TouchableOpacity style= {styles.btnCoffee}>
-                                        <Image style={{width: 25, height: 25}}  source={require('../assets/images/Group 19.png')}/>
-                                        <Text style = {styles.textCoffee}>Coffee</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style = {styles.btnMilk}>
-                                        <Ionicons name="water" size={25} color='#D17842' />
-                                        <Text style = {styles.textCoffee}>Milk</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <View>
-                                    <TouchableOpacity style = {styles.btnText}>
-                                        <Text style = {styles.textCoffee}>Medium Roast</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </View>
-
-
-                        <View style={styles.mota}>
-    <LinearGradient
-        colors={['#111111', '#333333']} // Màu nền gradient
-        style={styles.mt}
-    >
-        <Text style={{color: 'white', fontWeight: 'bold'}}>Description</Text>
-        <Text style={{color: 'white'}}>{item.description}</Text>
-    </LinearGradient>
-</View>
-                    </View>
-
-                   
-                )}/>
+                renderItem={renderItem}/>
 
             </View>
         </View>
@@ -231,8 +264,6 @@ const styles = StyleSheet.create({
      }, 
      mota:{
         width: '90%',
-        height: 120,
-        backgroundColor: 'white',
         position: 'absolute', 
         bottom: -100, 
         

@@ -3,12 +3,14 @@ import { Image, ImageBackground, Platform, StyleSheet, Text, TextInput, Touchabl
 import { Ionicons } from "@expo/vector-icons";
 
 const Setting = () => {
+    
     const [password, setPassword] = useState('');
     const [retypePassword, setRetypePassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showRetypePassword, setShowRetypePassword] = useState(false);
 
     return (
+
         <View style={styles.container}>
             <ImageBackground
                 style={styles.content}
@@ -17,6 +19,7 @@ const Setting = () => {
                 
                 <View style={styles.header}>
                     <TouchableOpacity style={styles.btnBack}>
+
                         <Ionicons name="return-down-back" size={24} color='white'/>
                     </TouchableOpacity>
                     <Text style={styles.title}>Setting</Text>

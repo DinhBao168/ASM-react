@@ -22,7 +22,7 @@ const HomeScreen = () => {
 
   useEffect(()=>{
     
-    fetch(`http://192.168.110.29:3000/products`)
+    fetch(`http://172.20.10.2:3000/products`)
     .then(response=> response.json())
     .then(data =>setProducts(data))
     
@@ -49,10 +49,16 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <StatusBar translucent backgroundColor='transparent' barStyle='dark-content'/>
       <View style={styles.header1}>
-        <View>
+        <TouchableOpacity
+        onPress={()=>navigation.navigate('Profile')}
+        >
           <Image style={styles.icon} source={require('../assets/images/app.png')} />
-        </View>
-        <Image style={styles.icon1} source={require('../assets/images/Intersect.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity 
+        onPress={()=>navigation.navigate('Setting')}>
+           <Image style={styles.icon1} source={require('../assets/images/Intersect.png')} />
+        </TouchableOpacity>
+       
       </View>
 
       <View style={styles.header}>
@@ -99,7 +105,7 @@ const HomeScreen = () => {
           <Ionicons name='cart' size={24} color='#D17842'/>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() =>navigation.navigate('Favourite')}>
           <Ionicons name='heart' size={24} color='#D17842'/>
         </TouchableOpacity>
  

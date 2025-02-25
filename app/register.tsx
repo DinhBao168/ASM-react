@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 
-const api = `http://192.168.110.29:3000/users`
+const api = `http://172.20.10.2:3000/users`
 
 const SignUp = () => {
   const [name, setName] = useState('');

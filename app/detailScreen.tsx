@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
 import { useNavigation } from 'expo-router';
 import React, { useState } from 'react';
@@ -9,6 +10,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  Alert,
 } from 'react-native';
 
 interface Product {
@@ -26,6 +28,17 @@ interface Product {
   roastType: string; // Kiểu rang (đối với cà phê)
 }
 
+interface Favourite {
+  id: string,
+  name: string,
+  subtitle: string,
+  rating: number,
+  image: string,
+  tags: string[],
+  roastType: string,
+  description: string,
+}
+
 
 const CoffeeDetails = () => {
  
@@ -35,6 +48,40 @@ const CoffeeDetails = () => {
 
   const { products } = route.params as { products: Product };
   const [selectedSize, setSelectedSize] = useState(products.sizes[0]);
+
+  const addToYT = async (product: Favourite) => {
+    try {
+      // Lấy danh sách sản phẩm yêu thích từ API
+      const response = await fetch(`http://172.20.10.2:3000/favorites`);
+      const favourites = await response.json();
+  
+      // Kiểm tra nếu sản phẩm đã có trong danh sách yêu thích
+      const isExist = favourites.some((item: Favourite) => item.id === product.id);
+      if (isExist) {
+        Alert.alert("Sản phẩm này đã có trong danh sách yêu thích!");
+        return;
+      }
+  
+      // Nếu chưa tồn tại, tiến hành thêm mới
+      const res = await fetch(`http://172.20.10.2:3000/favorites`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      });
+  
+      if (res.ok) {
+        Alert.alert("Đã thêm vào yêu thích!");
+      } else {
+        Alert.alert("Lỗi khi thêm vào yêu thích!");
+      }
+    } catch (error) {
+      Alert.alert("Lỗi kết nối đến server!");
+      console.error(error);
+    }
+  };
+  
 
   return (
     <ScrollView style={styles.container}>
@@ -50,11 +97,10 @@ const CoffeeDetails = () => {
               style={styles.icon}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={{width: 25, height: 25, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center', borderRadius:8}}>
-            <Image
-              source={require('../assets/images/love.png')}// Icon trái tim
-              style={styles.icon1}
-            />
+          <TouchableOpacity
+          onPress={()=>addToYT(products)}
+          style={{width: 30, height: 30, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center', borderRadius:8}}>
+            <Ionicons name='heart' size={20} color='#FF3399'/>
           </TouchableOpacity>
         </View>
         <View style={styles.opacity}>
@@ -70,17 +116,12 @@ const CoffeeDetails = () => {
         <View style={styles.row}>
           <View style={{flexDirection: 'row'}}>
           <View style={styles.tag}>
-            <Image
-              source={require('../assets/images/coffee.png')} // Biểu tượng hạt cà phê
-              style={styles.tagIcon}
-            />
+            <Ionicons name='cafe' size={24} color='#D17842'/>
             <Text style={styles.tagText}>{products.tags[0]}</Text>
           </View>
           <View style={styles.tag}>
-            <Image
-              source={require('../assets/images/location.png')} // Biểu tượng châu Phi
-              style={styles.tagIcon}
-            />
+            <Ionicons name='water' size={24} color='#D17842'/>
+            
             <Text style={styles.tagText}>{products.tags[1]}</Text>
           </View>
           </View>

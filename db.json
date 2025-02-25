@@ -27,18 +27,32 @@
       "email": "long1@gmail.com",
       "password": "111",
       "role": "customer"
+    },
+    {
+      "id": "eb71",
+      "name": "gbao",
+      "email": "gbao@gmail.com",
+      "password": "111",
+      "role": "customer"
+    },
+    {
+      "id": "9e10",
+      "name": "dinhbao",
+      "email": "bao123@gmail.com",
+      "password": "111",
+      "role": "customer"
     }
   ],
   "products": [
     {
       "id": "101",
-      "name": "Cappuccino",
+      "name": "Cappuccino333",
       "subtitle": "With Steamed Milk",
       "price": 4.2,
       "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg",
       "detailImage": "https://www.acouplecooks.com/wp-content/uploads/2020/10/how-to-make-cappuccino-005.jpg",
       "rating": 4.5,
-      "reviews": 6879,
+      "reviews": 100,
       "description": "Cappuccino is a latte made with more foam than steamed milk, often with a sprinkle of cocoa powder or cinnamon on top.",
       "sizes": [
         {
@@ -62,13 +76,13 @@
     },
     {
       "id": "102",
-      "name": "Espresso",
+      "name": "Cafe đá",
       "subtitle": "Strong and bold",
       "price": 3.5,
       "image": "https://img.freepik.com/premium-photo/espresso-delight-enjoying-rich-bold-flavor-every-sip_1106454-17863.jpg",
       "detailImage": "https://bitofcream.com/wp-content/uploads/2022/09/cropped-Espresso-1.png",
-      "rating": 4.7,
-      "reviews": 5231,
+      "rating": 4.5,
+      "reviews": 100,
       "description": "Espresso is a concentrated coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.",
       "sizes": [
         {
@@ -92,13 +106,13 @@
     },
     {
       "id": "103",
-      "name": "Americano",
+      "name": "Americano 123",
       "subtitle": "Rich and smooth",
       "price": 3.8,
       "image": "https://www.thedailymeal.com/img/gallery/what-is-an-americano-coffee-and-why-is-it-called-that/l-intro-1675294683.jpg",
       "detailImage": "https://th.bing.com/th/id/OIP.j8FBKOP90XMyt14srxE55wHaHa?rs=1&pid=ImgDetMain",
-      "rating": 4.3,
-      "reviews": 4120,
+      "rating": 4.5,
+      "reviews": 100,
       "description": "Americano is a coffee drink prepared by diluting an espresso with hot water, giving it a similar strength to traditional coffee but with a different flavor.",
       "sizes": [
         {
@@ -121,34 +135,139 @@
       "roastType": "Light Roasted"
     },
     {
-      "id": "1740220627958",
+      "id": "1740223070855",
       "name": "Cafe sữa",
-      "subTitle": "Với trứng và đá",
-      "price": 15000,
+      "subtitle": "",
+      "price": 5,
       "image": "https://th.bing.com/th/id/OIP.STIsesBSIMyK3oAZT90FBQHaJE?rs=1&pid=ImgDetMain",
       "detailImage": "https://th.bing.com/th/id/OIP.jV0tzwoGMH4fQke45uWhWQHaJQ?w=640&h=800&rs=1&pid=ImgDetMain",
       "rating": 4.5,
       "reviews": 100,
-      "description": "Siêu ngon",
+      "description": "Ngon tuyệt",
       "sizes": [
         {
           "size": "S",
-          "price": 15000
+          "price": 5
         },
         {
           "size": "M",
-          "price": 20000
+          "price": 6
         },
         {
           "size": "L",
-          "price": 25000
+          "price": 8
         }
       ],
       "tags": [
-        "Cafe",
-        "milk"
+        "Sữa",
+        "đá xay"
       ],
-      "roastType": "Dark "
+      "roastType": "Light"
+    },
+    {
+      "id": "1740450050942",
+      "name": "Cafe trứng",
+      "subtitle": "Với muối và đá",
+      "price": 3,
+      "image": "https://th.bing.com/th/id/OIP.STIsesBSIMyK3oAZT90FBQHaJE?rs=1&pid=ImgDetMain",
+      "detailImage": "https://th.bing.com/th/id/OIP.jV0tzwoGMH4fQke45uWhWQHaJQ?w=640&h=800&rs=1&pid=ImgDetMain",
+      "rating": 4.5,
+      "reviews": 100,
+      "description": "Ngon hết sảy",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 3
+        },
+        {
+          "size": "M",
+          "price": 3
+        },
+        {
+          "size": "L",
+          "price": 4
+        }
+      ],
+      "tags": [
+        "Muối",
+        "đá"
+      ],
+      "roastType": "Light"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "1",
+      "name": "Cappuccino",
+      "subtitle": "With Steamed Milk",
+      "rating": 4.5,
+      "image": "https://th.bing.com/th/id/OIP.j8FBKOP90XMyt14srxE55wHaHa?rs=1&pid=ImgDetMain",
+      "tags": [
+        "Coffee",
+        "Milk"
+      ],
+      "roastType": "Medium Roast",
+      "description": "Lorem ipsum dolor sit ametbdsjd  adhdas hdajkhksaj jhdjhd"
+    },
+    {
+      "id": "1740450050942",
+      "name": "Cafe trứng",
+      "subtitle": "Với muối và đá",
+      "price": 3,
+      "image": "https://th.bing.com/th/id/OIP.STIsesBSIMyK3oAZT90FBQHaJE?rs=1&pid=ImgDetMain",
+      "detailImage": "https://th.bing.com/th/id/OIP.jV0tzwoGMH4fQke45uWhWQHaJQ?w=640&h=800&rs=1&pid=ImgDetMain",
+      "rating": 4.5,
+      "reviews": 100,
+      "description": "Ngon hết sảy",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 3
+        },
+        {
+          "size": "M",
+          "price": 3
+        },
+        {
+          "size": "L",
+          "price": 4
+        }
+      ],
+      "tags": [
+        "Muối",
+        "đá"
+      ],
+      "roastType": "Light"
+    },
+    {
+      "id": "102",
+      "name": "Cafe đá",
+      "subtitle": "Strong and bold",
+      "price": 3.5,
+      "image": "https://img.freepik.com/premium-photo/espresso-delight-enjoying-rich-bold-flavor-every-sip_1106454-17863.jpg",
+      "detailImage": "https://bitofcream.com/wp-content/uploads/2022/09/cropped-Espresso-1.png",
+      "rating": 4.5,
+      "reviews": 100,
+      "description": "Espresso is a concentrated coffee brewed by forcing a small amount of nearly boiling water through finely-ground coffee beans.",
+      "sizes": [
+        {
+          "size": "S",
+          "price": 3.5
+        },
+        {
+          "size": "M",
+          "price": 4
+        },
+        {
+          "size": "L",
+          "price": 4.5
+        }
+      ],
+      "tags": [
+        "Coffee",
+        "Egg"
+      ],
+      "roastType": "Dark Roasted"
     }
   ]
 }
